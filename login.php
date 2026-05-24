@@ -45,7 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["user_id"] = $user["id"];
             $_SESSION["username"] = $user["username"];
 
-            echo "Login successful! Welcome " . $user["username"];
+            //echo "Login successful! Welcome " . $user["username"];
+            header("Location: games/reflex_game.php");
+            exit();
 
         } else {
             echo "Wrong password!";

@@ -1,0 +1,233 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:Arial, sans-serif;
+
+    background:
+    linear-gradient(
+        135deg,
+        #0f0f0f,
+        #1a1a1a,
+        #121212
+    );
+
+    color:white;
+
+    min-height:100vh;
+}
+
+
+/* NAVBAR */
+
+nav{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    backdrop-filter:blur(10px);
+
+    background:rgba(20,20,20,0.85);
+
+    border-bottom:1px solid rgba(255,255,255,0.1);
+
+    padding:18px 40px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+nav h1{
+
+    color:#00ffcc;
+
+    font-size:2rem;
+
+    letter-spacing:2px;
+}
+
+nav ul{
+
+    list-style:none;
+
+    display:flex;
+
+    gap:25px;
+}
+
+nav ul li a{
+
+    color:white;
+
+    text-decoration:none;
+
+    position:relative;
+
+    transition:0.3s;
+}
+
+nav ul li a::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:0;
+
+    height:2px;
+
+    left:0;
+
+    bottom:-5px;
+
+    background:#00ffcc;
+
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+
+    color:#00ffcc;
+}
+
+nav ul li a:hover::after{
+
+    width:100%;
+}
+
+
+/* GLOBAL BUTTON */
+
+button{
+
+    transition:0.3s;
+}
+
+button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 0 15px rgba(0,255,204,0.4);
+}
+
+
+/* CARDS */
+
+.game-card,
+.quick-card,
+.profile-card,
+.stat-card{
+
+    box-shadow:
+    0 0 20px rgba(0,0,0,0.3);
+
+    transition:0.3s;
+}
+
+.game-card:hover,
+.quick-card:hover,
+.profile-card:hover,
+.stat-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:
+    0 0 25px rgba(0,255,204,0.2);
+}
+
+
+/* TABLES */
+
+table{
+
+    background:#1f1f1f;
+
+    border-radius:15px;
+
+    overflow:hidden;
+}
+
+th{
+
+    background:#00ffcc;
+
+    color:black;
+}
+
+td{
+
+    background:#1a1a1a;
+}
+
+
+/* FOOTER */
+
+footer{
+
+    border-top:1px solid rgba(255,255,255,0.1);
+}
+
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+
+    background:#111;
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#00ffcc;
+
+    border-radius:10px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    nav{
+
+        flex-direction:column;
+
+        gap:15px;
+
+        padding:20px;
+    }
+
+    nav ul{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+        gap:15px;
+    }
+
+    nav h1{
+
+        font-size:1.5rem;
+    }
+}

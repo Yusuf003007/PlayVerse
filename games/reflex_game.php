@@ -1,58 +1,191 @@
 <?php
 include '../includes/auth.php';
-include '../includes/db.php';
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Reflex Game - PlayVerse</title>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reflex Game</title>
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+
     <style>
-        #box {
-            width: 100px;
-            height: 100px;
-            background: red;
-            position: absolute;
-            display: none;
-            cursor: pointer;
+
+        .game-container{
+
+            max-width:900px;
+            margin:auto;
+            padding:30px;
+            text-align:center;
         }
+
+        .stats{
+
+            display:flex;
+            justify-content:center;
+            gap:40px;
+
+            margin-bottom:20px;
+        }
+
+        .stat-box{
+
+            background:#1f1f1f;
+            padding:15px 25px;
+            border-radius:12px;
+            min-width:150px;
+        }
+
+        .stat-box h3{
+
+            color:#00ffcc;
+            margin-bottom:10px;
+        }
+
+        #game-area{
+
+            width:100%;
+            max-width:800px;
+            height:500px;
+
+            background:#1a1a1a;
+
+            border:3px solid #00ffcc;
+
+            border-radius:20px;
+
+            margin:auto;
+
+            position:relative;
+
+            overflow:hidden;
+        }
+
+        #box{
+
+            width:80px;
+            height:80px;
+
+            background:#00ffcc;
+
+            border-radius:15px;
+
+            position:absolute;
+
+            display:none;
+
+            cursor:pointer;
+
+            transition:0.1s;
+        }
+
+        #box:hover{
+
+            transform:scale(1.1);
+        }
+
+        #start-screen,
+        #game-over-screen{
+
+            position:absolute;
+
+            width:100%;
+            height:100%;
+
+            background:rgba(0,0,0,0.9);
+
+            display:flex;
+
+            flex-direction:column;
+
+            justify-content:center;
+            align-items:center;
+
+            z-index:10;
+        }
+
+        .game-btn{
+
+            margin-top:20px;
+
+            padding:15px 30px;
+
+            border:none;
+
+            border-radius:10px;
+
+            background:#00ffcc;
+
+            cursor:pointer;
+
+            font-size:1rem;
+        }
+
     </style>
+
 </head>
 <body>
 
-<h2>Reflex Game</h2>
-<p>Click the box as fast as you can!</p>
+<?php include '../includes/header.php'; ?>
 
-<p>Score: <span id="score">0</span></p>
+<div class="game-container">
 
-<div id="box"></div>
+    <h1>🎮 Reflex Game</h1>
 
-<script>
-let score = 0;
-let box = document.getElementById("box");
+    <div class="stats">
 
-function showBox() {
-    let x = Math.random() * 400;
-    let y = Math.random() * 300;
+        <div class="stat-box">
+            <h3>Score</h3>
+            <p id="score">0</p>
+        </div>
 
-    box.style.left = x + "px";
-    box.style.top = y + "px";
-    box.style.display = "block";
+        <div class="stat-box">
+            <h3>Time</h3>
+            <p id="time">15</p>
+        </div>
 
-    setTimeout(() => {
-        box.style.display = "none";
-    }, 1000);
-}
+    </div>
 
-box.onclick = function() {
-    score++;
-    document.getElementById("score").innerText = score;
-    box.style.display = "none";
-    showBox();
-}
+    <div id="game-area">
 
-setInterval(showBox, 1500);
-</script>
+        <div id="start-screen">
+
+            <h2>Welcome to Reflex Game</h2>
+
+            <button class="game-btn" onclick="startGame()">
+
+                Start Game
+
+            </button>
+
+        </div>
+
+        <div id="game-over-screen" style="display:none;">
+
+            <h2>Game Over</h2>
+
+            <p id="final-score"></p>
+
+            <button class="game-btn" onclick="restartGame()">
+
+                Play Again
+
+            </button>
+
+        </div>
+
+        <div id="box"></div>
+
+    </div>
+
+</div>
+
+<script src="../assets/js/reflex.js"></script>
 
 </body>
 </html>
